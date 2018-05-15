@@ -95,12 +95,44 @@ public class DataService  {
 			}
 		});
 	}
-
-	public IEnumerable<Person> GetPersons(){
+    public void CreatePumpsDB()
+    {
+        if (_connection.Table<Pump>()==null)
+        {
+            _connection.DropTable<Pump>();
+            _connection.CreateTable<Pump>();
+            _connection.InsertAll(new[]
+        {
+            new Pump{
+                Id = 1,
+                Model = "Wilo MPS204",
+                Serial = 123456,
+                MadeIn = "France"
+            },
+            new Pump{
+                Id = 2,
+                Model = "Wilo MPS204",
+                Serial = 123457,
+                MadeIn = "France"
+            },
+            new Pump{
+                Id = 1,
+                Model = "Wilo MPS504",
+                Serial = 123458,
+                MadeIn = "Italy"
+            }
+            }
+        );
+        }
+    }
+    public IEnumerable<Person> GetPersons(){
 		return _connection.Table<Person>();
 	}
-
-	public IEnumerable<Person> GetPersonsNamedRoberto(){
+    public IEnumerable<Pump> GetPumps()
+    {
+        return _connection.Table<Pump>();
+    }
+    public IEnumerable<Person> GetPersonsNamedRoberto(){
 		return _connection.Table<Person>().Where(x => x.Name == "Roberto");
 	}
 
@@ -117,4 +149,15 @@ public class DataService  {
 		_connection.Insert (p);
 		return p;
 	}
+    public void  CreatePump(string _Model,long _Serial, string _MadeIn)
+    {
+        var p = new Pump
+        {
+            Model = _Model,
+            Serial = _Serial,
+            MadeIn = _MadeIn
+        };
+        _connection.Insert(p);
+        
+    }
 }

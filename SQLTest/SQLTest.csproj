@@ -291,10 +291,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\AddNewPump.cs" />
     <Compile Include="Assets\Scripts\CreateDBScript.cs" />
+    <Compile Include="Assets\Scripts\CreatePumpsDB.cs" />
     <Compile Include="Assets\Scripts\DataService.cs" />
     <Compile Include="Assets\Scripts\ExistingDBScript.cs" />
     <Compile Include="Assets\Scripts\Person.cs" />
+    <Compile Include="Assets\Scripts\Pumps.cs" />
     <Compile Include="Assets\Scripts\SQLite.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
